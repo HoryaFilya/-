@@ -25,7 +25,11 @@ public class MainTask2 {
      * Переехать из текущего места в заданную точку
      * на любом, заранее определённом транспорте
      */
-    public static void moveTo(Person person, Position destination) {
+    public static void moveTo(Person person, Position destination, Transport transport) {
+        person.walk(transport.getPosition());
+        transport.go(person, destination);
+        person.walk(destination);
+
         // TODO
         assert person.getPosition() == destination;
     }
