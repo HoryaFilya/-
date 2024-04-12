@@ -22,7 +22,23 @@ public class MainTask3 {
      * Переехать из текущего места в заданную точку
      * на любом, заранее определённом транспорте
      */
-    public static void moveTo(Person person, Position destination) {
+    public static void moveTo(Person person, Position destination, Transport transport) {
+        boolean itIsTimeToWalk = false;                 // пора идти пешком?
+        person.walk(transport.getPosition());
+        transport.go(person, destination);
+
+        while (!itIsTimeToWalk) {
+
+//            transport = new Bus();                    // меняем транспорт
+//            transport = new Car();                    // меняем транспорт
+
+            person.walk(transport.getPosition());
+            transport.go(person, destination);
+//            itIsTimeToWalk = true;                    // ставим в тот момент, когда пора идти пешком
+        }
+
+        person.walk(destination);
+
         // TODO
         assert person.getPosition() == destination;
     }
